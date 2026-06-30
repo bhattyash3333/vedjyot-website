@@ -1,28 +1,19 @@
-VedJyot Complete Website Upload Steps
+Upload these files to GitHub repository root:
 
-Upload/replace ALL files in your GitHub repository root:
+index.html
+about.html
+services.html
+astrology.html
+samagri.html
+contact.html
+style.css
 
-- index.html
-- about.html
-- services.html
-- astrology.html
-- gallery.html
-- samagri.html
-- testimonials.html
-- contact.html
-- style.css
-- script.js
-- assets folder
+No photos.
+No assets folder.
+No one-page website.
 
-Important:
-1. Do not upload only the ZIP file.
-2. Extract the ZIP first.
-3. Upload all files/folders inside the ZIP.
-4. Commit changes.
-5. Wait 2–5 minutes.
-6. Open: https://bhattyash3333.github.io/vedjyot-website/
-7. Hard refresh: Ctrl + F5.
-
-Phone: 226-724-3493
-Email: vedjyot.info@gmail.com
-Location: Windsor, Ontario, Canada
+After upload:
+1. Commit changes
+2. Wait 2-5 minutes
+3. Open your website
+4. Press Ctrl + F5

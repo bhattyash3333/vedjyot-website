@@ -1,42 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | VedJyot</title>
-<meta name="description" content="VedJyot offers Hindu puja, astrology, Vastu and spiritual services across Canada and USA." />
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="site-header">
-  <div class="container nav-wrap">
-    <a href="index.html" class="logo"><span class="logo-symbol">ॐ</span><span>Ved<span>Jyot</span></span></a>
-    <button class="menu-btn" aria-label="Open menu">☰</button>
-    <nav class="nav">
-      <a href="index.html" class="">Home</a>
-      <a href="about.html" class="">About Us</a>
-      <a href="services.html" class="">Services</a>
-      <a href="astrology.html" class="">Astrology</a>
-      <a href="gallery.html" class="">Gallery</a>
-      <a href="samagri.html" class="">Samagri</a>
-      <a href="contact.html" class="active">Contact</a>
+<header>
+  <div class="container navbar">
+    <a class="logo" href="index.html">ॐ Ved<span>Jyot</span></a>
+    <nav>
+      <a class="" href="index.html">Home</a>
+      <a class="" href="about.html">About</a>
+      <a class="" href="services.html">Services</a>
+      <a class="" href="astrology.html">Astrology</a>
+      <a class="" href="samagri.html">Samagri</a>
+      <a class="active" href="contact.html">Contact</a>
     </nav>
-    <a class="btn primary small" href="contact.html">Book a Puja</a>
+    <a class="btn" href="contact.html">Book Now</a>
   </div>
 </header>
 
 
 <main>
-<section class="page-hero"><div class="container"><h1>Contact VedJyot</h1><p>Book a puja, astrology consultation or spiritual service across Canada and USA.</p></div></section>
-<section class="contact"><div class="container contact-grid"><div class="contact-info"><h2>We Are Here To Help You</h2><p>For bookings, consultations or any inquiries, feel free to contact us.</p><ul><li>☎ <a href="tel:2267243493">226-724-3493</a></li><li>💬 <a href="https://wa.me/12267243493">WhatsApp: 226-724-3493</a></li><li>✉ <a href="mailto:vedjyot.info@gmail.com">vedjyot.info@gmail.com</a></li><li>📍 Windsor, Ontario, Canada</li></ul></div><form class="contact-form" action="mailto:vedjyot.info@gmail.com" method="post" enctype="text/plain"><h3>Send Us a Message</h3><div class="form-row"><input name="name" placeholder="Your Name" required><input name="email" placeholder="Your Email"></div><div class="form-row"><input name="phone" placeholder="Your Phone"><select name="service"><option>Service Required</option><option>Satyanarayan Katha</option><option>Griha Pravesh</option><option>Wedding Ceremony</option><option>Astrology Consultation</option><option>Vastu Consultation</option></select></div><textarea name="message" placeholder="Your Message"></textarea><button class="btn primary">Send Message</button></form></div></section>
+<section class="page-hero"><div class="container"><h1>Contact VedJyot</h1><p>Book a puja, astrology consultation or spiritual service.</p></div></section>
+<section class="contact-box"><div class="container two-col">
+<div>
+<h2>Contact Details</h2>
+<p>Phone: <a href="tel:2267243493">226-724-3493</a></p>
+<p>WhatsApp: <a href="https://wa.me/12267243493">226-724-3493</a></p>
+<p>Email: <a href="mailto:vedjyot.info@gmail.com">vedjyot.info@gmail.com</a></p>
+<p>Serving Canada & USA</p>
+</div>
+<form action="mailto:vedjyot.info@gmail.com" method="post" enctype="text/plain">
+<input name="name" placeholder="Your Name" required>
+<input name="phone" placeholder="Phone Number">
+<input name="email" placeholder="Email">
+<select name="service">
+<option>Service Required</option>
+<option>Satyanarayan Katha</option>
+<option>Griha Pravesh</option>
+<option>Wedding Ceremony</option>
+<option>Astrology Consultation</option>
+<option>Vastu Consultation</option>
+</select>
+<textarea name="message" placeholder="Your Message"></textarea>
+<button class="btn" type="submit">Send Message</button>
+</form>
+</div></section>
 </main>
 
 
-<a class="floating-whatsapp" href="https://wa.me/12267243493" aria-label="WhatsApp">💬</a>
-<footer><div class="container"><p>© 2026 VedJyot. All Rights Reserved.</p></div></footer>
-<script src="script.js"></script>
+<a class="whatsapp" href="https://wa.me/12267243493">💬</a>
+<footer>© 2026 VedJyot. All Rights Reserved.</footer>
 
 </body>
 </html>
