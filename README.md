@@ -1,1 +1,3 @@
-VedJyot website - upload all files to GitHub Pages. Keep index.html in the root folder.
+# VedJyot Website
+
+Upload these files to GitHub Pages. Keep index.html in the root folder.
