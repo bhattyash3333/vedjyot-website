@@ -1,35 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gallery | VedJyot</title>
-  <meta name="description" content="VedJyot gallery page for puja, katha, havan, wedding and Hindu rituals." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery | VedJyot</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+
+<style>
+.gallery-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+padding:60px 8%;
+}
+
+.gallery-item{
+background:#fff;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.12);
+transition:.3s;
+}
+
+.gallery-item:hover{
+transform:translateY(-8px);
+}
+
+.gallery-item img{
+width:100%;
+height:280px;
+object-fit:cover;
+display:block;
+}
+
+.gallery-item h3{
+text-align:center;
+padding:18px;
+font-family:Cinzel,serif;
+color:#7b1113;
+}
+
+.page-hero{
+background:#7b1113;
+color:white;
+padding:70px 20px;
+text-align:center;
+}
+
+.page-hero h1{
+font-size:48px;
+margin-bottom:15px;
+}
+
+.page-hero p{
+font-size:18px;
+}
+</style>
+
 </head>
+
 <body>
+
 <header class="site-header">
-  <a href="index.html" class="brand"><span class="om">ॐ</span><span>VedJyot</span></a>
-  <button class="menu" aria-label="Open menu">☰</button>
-  <nav class="site-nav">
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="samagri.html">Katha Samagri</a>
-    <a href="about.html">About</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="contact.html">Contact</a>
-    <a class="nav-cta" href="https://wa.me/12267243493?text=Jai%20Shree%20Krishna%2C%20I%20would%20like%20to%20book%20a%20puja%20or%20consultation." target="_blank">WhatsApp</a>
-  </nav>
+
+<a href="index.html" class="brand">🕉 VedJyot</a>
+
+<nav class="site-nav">
+<a href="index.html">Home</a>
+<a href="services.html">Services</a>
+<a href="samagri.html">Katha Samagri</a>
+<a href="gallery.html">Gallery</a>
+<a href="contact.html">Contact</a>
+<a href="https://wa.me/12267243493" target="_blank">WhatsApp</a>
+</nav>
+
 </header>
-<main><section class="page-hero"><p class="eyebrow">Gallery</p><h1>Rituals, Puja & Spiritual Moments</h1><p>Add your real puja photos here later. This page is ready for your gallery.</p></section><section class="section"><div class="gallery-grid"><div>🛕<span>Temple Setup</span></div><div>🔥<span>Havan</span></div><div>🙏<span>Satyanarayan Katha</span></div><div>🌺<span>Ganesh Puja</span></div><div>💍<span>Wedding Rituals</span></div><div>🏡<span>Griha Pravesh</span></div></div></section></main>
-<a class="float-wa" href="https://wa.me/12267243493?text=Jai%20Shree%20Krishna%2C%20I%20would%20like%20to%20book%20a%20puja%20or%20consultation." target="_blank" aria-label="WhatsApp">💬</a>
+
+<section class="page-hero">
+<h1>Rituals, Puja & Spiritual Moments</h1>
+<p>Some beautiful moments from puja and spiritual ceremonies.</p>
+</section>
+
+<div class="gallery-grid">
+
+<div class="gallery-item">
+<img src="assets/images/katha1.jpg" alt="Satyanarayan Katha">
+<h3>Satyanarayan Katha</h3>
+</div>
+
+<div class="gallery-item">
+<img src="assets/images/havan1.jpg" alt="Havan">
+<h3>Havan</h3>
+</div>
+
+<div class="gallery-item">
+<img src="assets/images/ganesh1.jpg" alt="Ganesh Puja">
+<h3>Ganesh Puja</h3>
+</div>
+
+<div class="gallery-item">
+<img src="assets/images/wedding1.jpg" alt="Wedding Rituals">
+<h3>Wedding Rituals</h3>
+</div>
+
+<div class="gallery-item">
+<img src="assets/images/griha1.jpg" alt="Griha Pravesh">
+<h3>Griha Pravesh</h3>
+</div>
+
+<div class="gallery-item">
+<img src="assets/images/puja1.jpg" alt="Puja Setup">
+<h3>Puja Setup</h3>
+</div>
+
+</div>
+
 <footer class="footer">
-  <div><strong>VedJyot</strong><p>Authentic Hindu Priest, Puja, Vastu & Vedic Astrology Services.</p></div>
-  <div><p><b>Serving Canada & USA</b></p><p><a href="tel:+12267243493">226-724-3493</a></p><p><a href="contact.html">Book a Puja / Consultation</a></p></div>
+
+<strong>VedJyot</strong><br>
+Serving Canada & USA<br><br>
+
+📞 <a href="tel:+12267243493">226-724-3493</a>
+
 </footer>
-<script src="assets/js/script.js"></script>
+
 </body>
 </html>
