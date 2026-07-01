@@ -1,1 +1,8 @@
-document.addEventListener('DOMContentLoaded',()=>{const h=document.querySelector('.hamb'),m=document.querySelector('.menu');if(h)h.onclick=()=>m.classList.toggle('show');const lb=document.createElement('div');lb.className='lightbox';lb.innerHTML='<img alt="Puja photo">';document.body.appendChild(lb);document.querySelectorAll('.gallery img').forEach(img=>img.onclick=()=>{lb.querySelector('img').src=img.src;lb.classList.add('show')});lb.onclick=()=>lb.classList.remove('show');const f=document.querySelector('#contactForm');if(f)f.onsubmit=e=>{e.preventDefault();const d=new FormData(f);const body=`Name: ${d.get('name')}%0D%0APhone: ${d.get('phone')}%0D%0AService: ${d.get('service')}%0D%0A%0D%0A${d.get('message')}`;location.href=`mailto:vedjyotsewa@gmail.com?subject=Puja Inquiry from Website&body=${body}`}})
+
+const toggle=document.querySelector('.menu-toggle');
+const nav=document.querySelector('.site-nav');
+if(toggle&&nav){toggle.addEventListener('click',()=>nav.classList.toggle('open'));}
+const form=document.getElementById('contactForm');
+if(form){form.addEventListener('submit',e=>{e.preventDefault();const data=new FormData(form);const body=[`Name: ${data.get('name')||''}`,`Phone: ${data.get('phone')||''}`,`Email: ${data.get('email')||''}`,`Service: ${data.get('service')||''}`,`Message: ${data.get('message')||''}`].join('%0D%0A');window.location.href=`mailto:vedjyotsewa@gmail.com?subject=VedJyot Puja Inquiry&body=${body}`;});}
+const lb=document.getElementById('lightbox');
+if(lb){document.querySelectorAll('.gallery-item').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();lb.querySelector('img').src=a.href;lb.classList.add('open')}));lb.addEventListener('click',()=>lb.classList.remove('open'));}
