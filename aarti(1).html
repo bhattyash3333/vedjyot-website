@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="VedJyot Aarti library in Gujarati, Hindi and English transliteration."/>
+  <title>Aarti Library | VedJyot</title>
+  <link href="style.css" rel="stylesheet"/>
+  <style>
+    :root{
+      --maroon:#7b1d1d;
+      --gold:#d89a3b;
+      --cream:#fffaf1;
+      --line:#ead8c1;
+      --text:#654f43;
+    }
+    .prayer-hero{
+      padding:95px 0 70px;
+      text-align:center;
+      background:linear-gradient(135deg,#fffaf1,#f7e8d4);
+    }
+    .prayer-hero h1{
+      margin:8px 0 14px;
+      color:var(--maroon);
+      font-size:clamp(2.8rem,6vw,5rem);
+    }
+    .prayer-hero p{
+      max-width:760px;
+      margin:auto;
+      color:#735e50;
+      line-height:1.75;
+    }
+    .language-tabs{
+      position:sticky;
+      top:72px;
+      z-index:20;
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      padding:16px;
+      background:rgba(255,250,241,.96);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(8px);
+    }
+    .language-tabs button{
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:10px 18px;
+      background:#fff;
+      color:var(--maroon);
+      font:inherit;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .language-tabs button.active{
+      color:#fff;
+      background:var(--maroon);
+      border-color:var(--maroon);
+    }
+    .prayer-library{
+      padding:58px 0 85px;
+      background:#fffdf9;
+    }
+    .library-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:20px;
+    }
+    .prayer-card{
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:#fff;
+      box-shadow:0 12px 30px rgba(87,45,22,.07);
+      overflow:hidden;
+    }
+    .prayer-card summary{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:22px;
+      color:var(--maroon);
+      cursor:pointer;
+      font-size:1.18rem;
+      font-weight:700;
+      list-style:none;
+    }
+    .prayer-card summary::-webkit-details-marker{display:none}
+    .prayer-card summary:after{
+      content:"+";
+      margin-left:auto;
+      font-size:1.4rem;
+    }
+    .prayer-card[open] summary:after{content:"−"}
+    .prayer-body{
+      padding:0 22px 24px;
+      color:var(--text);
+      line-height:1.95;
+      white-space:pre-line;
+    }
+    .prayer-meta{
+      display:inline-block;
+      margin-bottom:12px;
+      padding:5px 9px;
+      border-radius:999px;
+      color:#955c1a;
+      background:#f8e8d4;
+      font-size:.72rem;
+      font-weight:700;
+      text-transform:uppercase;
+    }
+    .lang-panel{display:none}
+    .lang-panel.active{display:block}
+    .library-note{
+      margin-top:26px;
+      padding:18px 20px;
+      border-left:4px solid var(--gold);
+      border-radius:0 12px 12px 0;
+      background:#fff6e9;
+      color:#735b4c;
+      line-height:1.65;
+    }
+    @media(max-width:800px){
+      .library-grid{grid-template-columns:1fr}
+      .language-tabs{top:62px;overflow-x:auto;justify-content:flex-start}
+    }
+  </style>
+</head>
+<body>
+<header class="site-header" id="top">
+  <div class="container nav-wrap">
+    <a aria-label="VedJyot home" class="brand" href="index.html#top">
+      <span class="brand-mark">ॐ</span>
+      <span><strong>VEDJYOT</strong><small>Jyotish &amp; Puja Sewa</small></span>
+    </a>
+    <button aria-expanded="false" aria-label="Open menu" class="menu-toggle">☰</button>
+    <nav class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="aarti.html">Aarti</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a class="nav-phone" href="tel:+12267243493">226-724-3493</a>
+  </div>
+</header>
+
+<main>
+  <section class="prayer-hero">
+    <div class="container">
+      <p class="section-label">VedJyot Devotional Library</p>
+      <h1>Aarti Library</h1>
+      <p>Choose Gujarati, Hindi or English transliteration, then open any Aarti card to read the full prayer.</p>
+    </div>
+  </section>
+
+  <div class="language-tabs" role="tablist" aria-label="Choose language">
+    <button class="active" data-lang="gu" type="button">ગુજરાતી</button>
+    <button data-lang="hi" type="button">हिन्दी</button>
+    <button data-lang="en" type="button">English</button>
+  </div>
+
+  <section class="prayer-library">
+    <div class="container">
+      <div class="library-grid">
+
+        <details class="prayer-card" open>
+          <summary>🪔 Ganesh Aarti</summary>
+          <div class="prayer-body">
+            <span class="prayer-meta">Jai Ganesh Deva</span>
+            <div class="lang-panel active" data-lang="gu">જય ગણેશ જય ગણેશ, જય ગણેશ દેવા।
+માતા જાકી પાર્વતી, પિતા મહાદેવા॥
+
+એક દંત દયાવંત, ચાર ભુજાધારી।
+માથે સિંદૂર શોભે, મૂષકની સવારી॥
+
+અંધને આંખ આપે, કોડીને કાયા।
+બાંઝનને પુત્ર આપે, નિર્ધનને માયા॥
+
+હાર ચઢે ફૂલ ચઢે, અને ચઢે મેવા।
+લાડુનો ભોગ લાગે, સંત કરે સેવા॥
+
+જય ગણેશ જય ગણેશ, જય ગણેશ દેવા।
+માતા જાકી પાર્વતી, પિતા મહાદેવા॥</div>
+            <div class="lang-panel" data-lang="hi">जय गणेश जय गणेश, जय गणेश देवा।
+माता जाकी पार्वती, पिता महादेवा॥
+
+एकदन्त दयावन्त, चार भुजाधारी।
+माथे सिंदूर सोहे, मूसे की सवारी॥
+
+अन्धन को आँख देत, कोढ़िन को काया।
+बाँझन को पुत्र देत, निर्धन को माया॥
+
+हार चढ़े फूल चढ़े और चढ़े मेवा।
+लड्डुअन का भोग लगे, संत करें सेवा॥
+
+जय गणेश जय गणेश, जय गणेश देवा।
+माता जाकी पार्वती, पिता महादेवा॥</div>
+            <div class="lang-panel" data-lang="en">Jai Ganesh Jai Ganesh, Jai Ganesh Deva,
+Mata Jaki Parvati, Pita Mahadeva.
+
+Ek Dant Dayavant, Char Bhuja Dhari,
+Mathe Sindoor Sohe, Mooshak Ki Sawari.
+
+Andhan Ko Aankh Det, Kodhin Ko Kaya,
+Banjhan Ko Putra Det, Nirdhan Ko Maya.
+
+Haar Chadhe Phool Chadhe, Aur Chadhe Meva,
+Ladduan Ka Bhog Lage, Sant Karen Seva.
+
+Jai Ganesh Jai Ganesh, Jai Ganesh Deva,
+Mata Jaki Parvati, Pita Mahadeva.</div>
+          </div>
+        </details>
+
+        <details class="prayer-card">
+          <summary>🔱 Shiv Aarti</summary>
+          <div class="prayer-body">
+            <span class="prayer-meta">Om Jai Shiv Omkara</span>
+            <div class="lang-panel active" data-lang="gu">ૐ જય શિવ ઓંકારા, સ્વામી જય શિવ ઓંકારા।
+બ્રહ્મા વિષ્ણુ સદાશિવ, અર્ધાંગી ધારા॥
+
+એકાનન ચતુરાનન પંચાનન રાજે।
+હંસાસન ગરુડાસન વૃષવાહન સાજે॥
+
+દો ભુજ ચાર ચતુર્ભુજ દશભુજ અતિ સોહે।
+ત્રિગુણ રૂપ નિરખતા ત્રિભુવન જન મોહે॥
+
+અક્ષમાળા વનમાળા મુંડમાળા ધારી।
+ચંદન મૃગમદ સોહે, ભાલે શશિધારી॥
+
+ૐ જય શિવ ઓંકારા, સ્વામી જય શિવ ઓંકારા॥</div>
+            <div class="lang-panel" data-lang="hi">ॐ जय शिव ओंकारा, स्वामी जय शिव ओंकारा।
+ब्रह्मा विष्णु सदाशिव, अर्द्धांगी धारा॥
+
+एकानन चतुरानन पंचानन राजे।
+हंसासन गरुड़ासन वृषवाहन साजे॥
+
+दो भुज चार चतुर्भुज दशभुज अति सोहे।
+त्रिगुण रूप निरखता त्रिभुवन जन मोहे॥
+
+अक्षमाला वनमाला मुण्डमाला धारी।
+चन्दन मृगमद सोहे, भाले शशिधारी॥
+
+ॐ जय शिव ओंकारा, स्वामी जय शिव ओंकारा॥</div>
+            <div class="lang-panel" data-lang="en">Om Jai Shiv Omkara, Swami Jai Shiv Omkara,
+Brahma Vishnu Sadashiv, Ardhangi Dhara.
+
+Ekanan Chaturanan Panchanan Raje,
+Hansasan Garudasan Vrishvahan Saje.
+
+Do Bhuj Char Chaturbhuj Dashbhuj Ati Sohe,
+Trigun Roop Nirakhata Tribhuvan Jan Mohe.
+
+Akshamala Vanamala Mundamala Dhari,
+Chandan Mrigamad Sohe, Bhale Shashidhari.
+
+Om Jai Shiv Omkara, Swami Jai Shiv Omkara.</div>
+          </div>
+        </details>
+
+        <details class="prayer-card">
+          <summary>🌺 Durga Aarti</summary>
+          <div class="prayer-body">
+            <span class="prayer-meta">Jai Ambe Gauri</span>
+            <div class="lang-panel active" data-lang="gu">જય અંબે ગૌરી, મૈયા જય શ્યામા ગૌરી।
+તમને નિશદિન ધ્યાવત, હરિ બ્રહ્મા શિવરી॥
+
+માંગ સિંદૂર વિરાજત, ટીકો મૃગમદ કો।
+ઉજ્જ્વલ સે દોઉ નૈના, ચંદ્રવદન નીકો॥
+
+કનક સમાન કલેવર, રક્તામ્બર રાજે।
+રક્તપુષ્પ ગળમાળા, કંઠન પર સાજે॥
+
+કેહરી વાહન રાજત, ખડ્ગ ખપ્પર ધારી।
+સુર નર મુનિજન સેવત, તિનકે દુઃખ હારી॥
+
+જય અંબે ગૌરી, મૈયા જય શ્યામા ગૌરી॥</div>
+            <div class="lang-panel" data-lang="hi">जय अम्बे गौरी, मैया जय श्यामा गौरी।
+तुमको निशिदिन ध्यावत, हरि ब्रह्मा शिवरी॥
+
+मांग सिंदूर विराजत, टीको मृगमद को।
+उज्ज्वल से दोउ नैना, चन्द्रवदन नीको॥
+
+कनक समान कलेवर, रक्ताम्बर राजे।
+रक्तपुष्प गलमाला, कंठन पर साजे॥
+
+केहरि वाहन राजत, खड्ग खप्पर धारी।
+सुर नर मुनिजन सेवत, तिनके दुःख हारी॥
+
+जय अम्बे गौरी, मैया जय श्यामा गौरी॥</div>
+            <div class="lang-panel" data-lang="en">Jai Ambe Gauri, Maiya Jai Shyama Gauri,
+Tumko Nishidin Dhyavat, Hari Brahma Shivri.
+
+Maang Sindoor Virajat, Teeko Mrigamad Ko,
+Ujjwal Se Dou Naina, Chandravadan Neeko.
+
+Kanak Saman Kalevar, Raktambar Raje,
+Raktapushpa Galmala, Kanthan Par Saje.
+
+Kehari Vahan Rajat, Khadag Khappar Dhari,
+Sur Nar Munijan Sevat, Tinke Dukh Hari.
+
+Jai Ambe Gauri, Maiya Jai Shyama Gauri.</div>
+          </div>
+        </details>
+
+        <details class="prayer-card">
+          <summary>🌼 Vishnu Aarti</summary>
+          <div class="prayer-body">
+            <span class="prayer-meta">Om Jai Jagdish Hare</span>
+            <div class="lang-panel active" data-lang="gu">ૐ જય જગદીશ હરે, સ્વામી જય જગદીશ હરે।
+ભક્તજનોના સંકટ, ક્ષણમાં દૂર કરે॥
+
+જે ધ્યાવે ફળ પાવે, દુઃખ વિનશે મનનું।
+સુખ સંપત્તિ ઘર આવે, કષ્ટ મિટે તનનું॥
+
+માત પિતા તમે મારા, શરણ ગહું હું કોની।
+તમ વિના બીજો કોઈ નથી, આશ કરું હું કોની॥
+
+તમે પૂર્ણ પરમાત્મા, તમે અંતર્યામી।
+પરબ્રહ્મ પરમેશ્વર, તમે સૌના સ્વામી॥
+
+ૐ જય જગદીશ હરે, સ્વામી જય જગદીશ હરે॥</div>
+            <div class="lang-panel" data-lang="hi">ॐ जय जगदीश हरे, स्वामी जय जगदीश हरे।
+भक्त जनों के संकट, क्षण में दूर करे॥
+
+जो ध्यावे फल पावे, दुःख विनसे मन का।
+सुख सम्पत्ति घर आवे, कष्ट मिटे तन का॥
+
+मात पिता तुम मेरे, शरण गहूँ मैं किसकी।
+तुम बिन और न दूजा, आस करूँ मैं जिसकी॥
+
+तुम पूर्ण परमात्मा, तुम अन्तर्यामी।
+परब्रह्म परमेश्वर, तुम सबके स्वामी॥
+
+ॐ जय जगदीश हरे, स्वामी जय जगदीश हरे॥</div>
+            <div class="lang-panel" data-lang="en">Om Jai Jagdish Hare, Swami Jai Jagdish Hare,
+Bhakt Janon Ke Sankat, Kshan Mein Door Kare.
+
+Jo Dhyave Phal Pave, Dukh Vinse Man Ka,
+Sukh Sampatti Ghar Aave, Kasht Mite Tan Ka.
+
+Maat Pita Tum Mere, Sharan Gahun Main Kiski,
+Tum Bin Aur Na Dooja, Aas Karun Main Jiski.
+
+Tum Puran Paramatma, Tum Antaryami,
+Parabrahma Parameshwar, Tum Sabke Swami.
+
+Om Jai Jagdish Hare, Swami Jai Jagdish Hare.</div>
+          </div>
+        </details>
+
+        <details class="prayer-card">
+          <summary>🙏 Hanuman Aarti</summary>
+          <div class="prayer-body">
+            <span class="prayer-meta">Aarti Kije Hanuman Lala Ki</span>
+            <div class="lang-panel active" data-lang="gu">આરતી કીજૈ હનુમાન લલાની।
+દુષ્ટ દલન રઘુનાથ કલાની॥
+
+જાકે બલથી ગિરિવર કાંપે।
+રોગ દોષ જાકે નિકટ ન ઝાંપે॥
+
+અંજની પુત્ર મહાબલદાઈ।
+સંતનના પ્રભુ સદા સહાઈ॥
+
+દે બીરા રઘુનાથ પઠાયા।
+લંકા જારી સિયા સુધિ લાયા॥
+
+લંકા સો કોટ સમુદ્ર સી ખાઈ।
+જાત પવનસુત બાર ન લાઈ॥
+
+આરતી કીજૈ હનુમાન લલાની॥</div>
+            <div class="lang-panel" data-lang="hi">आरती कीजै हनुमान लला की।
+दुष्ट दलन रघुनाथ कला की॥
+
+जाके बल से गिरिवर कांपे।
+रोग दोष जाके निकट न झांके॥
+
+अंजनि पुत्र महाबलदायी।
+संतन के प्रभु सदा सहाई॥
+
+दे बीरा रघुनाथ पठाए।
+लंका जारि सिया सुधि लाए॥
+
+लंका सो कोट समुद्र सी खाई।
+जात पवनसुत बार न लाई॥
+
+आरती कीजै हनुमान लला की॥</div>
+            <div class="lang-panel" data-lang="en">Aarti Kije Hanuman Lala Ki,
+Dusht Dalan Raghunath Kala Ki.
+
+Jake Bal Se Girivar Kaanpe,
+Rog Dosh Jake Nikat Na Jhaanke.
+
+Anjani Putra Mahabaldayi,
+Santan Ke Prabhu Sada Sahayi.
+
+De Beera Raghunath Pathaye,
+Lanka Jari Siya Sudhi Laye.
+
+Lanka So Kot Samudra Si Khai,
+Jaat Pavansut Baar Na Lai.
+
+Aarti Kije Hanuman Lala Ki.</div>
+          </div>
+        </details>
+
+        <details class="prayer-card">
+          <summary>💰 Lakshmi Aarti</summary>
+          <div class="prayer-body">
+            <span class="prayer-meta">Om Jai Lakshmi Mata</span>
+            <div class="lang-panel active" data-lang="gu">ૐ જય લક્ષ્મી માતા, મૈયા જય લક્ષ્મી માતા।
+તમને નિશદિન સેવત, હરિ વિષ્ણુ વિધાતા॥
+
+ઉમા રમા બ્રહ્માણી, તમે જ જગમાતા।
+સૂર્ય ચંદ્રમા ધ્યાવત, નારદ ઋષિ ગાતા॥
+
+દુર્ગા રૂપ નિરંજનિ, સુખ સંપત્તિ દાતા।
+જે કોઈ તમને ધ્યાવે, ઋદ્ધિ સિદ્ધિ ધન પાતા॥
+
+તમે પાતાળ નિવાસિની, તમે જ શુભદાતા।
+કર્મ પ્રભાવ પ્રકાશિની, ભવનિધિની ત્રાતા॥
+
+ૐ જય લક્ષ્મી માતા, મૈયા જય લક્ષ્મી માતા॥</div>
+            <div class="lang-panel" data-lang="hi">ॐ जय लक्ष्मी माता, मैया जय लक्ष्मी माता।
+तुमको निशिदिन सेवत, हरि विष्णु विधाता॥
+
+उमा रमा ब्रह्माणी, तुम ही जगमाता।
+सूर्य चन्द्रमा ध्यावत, नारद ऋषि गाता॥
+
+दुर्गा रूप निरंजनि, सुख सम्पत्ति दाता।
+जो कोई तुमको ध्यावत, ऋद्धि सिद्धि धन पाता॥
+
+तुम पाताल निवासिनी, तुम ही शुभदाता।
+कर्म प्रभाव प्रकाशिनी, भवनिधि की त्राता॥
+
+ॐ जय लक्ष्मी माता, मैया जय लक्ष्मी माता॥</div>
+            <div class="lang-panel" data-lang="en">Om Jai Lakshmi Mata, Maiya Jai Lakshmi Mata,
+Tumko Nishidin Sevat, Hari Vishnu Vidhata.
+
+Uma Rama Brahmani, Tum Hi Jagmata,
+Surya Chandrama Dhyavat, Narad Rishi Gata.
+
+Durga Roop Niranjani, Sukh Sampatti Data,
+Jo Koi Tumko Dhyavat, Riddhi Siddhi Dhan Pata.
+
+Tum Patal Nivasini, Tum Hi Shubhdata,
+Karma Prabhav Prakashini, Bhavnidhi Ki Trata.
+
+Om Jai Lakshmi Mata, Maiya Jai Lakshmi Mata.</div>
+          </div>
+        </details>
+
+      </div>
+
+      <div class="library-note">
+        This updated page now contains actual Aartis. More Aartis such as Krishna, Ram, Sai Baba, Santoshi Maa and Khodiyar Maa can be added in the same three-language format.
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <div class="brand">
+        <span class="brand-mark">ॐ</span>
+        <span><strong>VEDJYOT</strong><small>Jyotish &amp; Puja Sewa</small></span>
+      </div>
+      <p>Authentic Vedic puja, katha, havan and astrology guidance across Canada and the USA.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="index.html#services">Puja Services</a>
+      <a href="calendar.html">Gujarati Calendar</a>
+      <a href="aarti.html">Aarti Library</a>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <a href="tel:+12267243493">226-724-3493</a>
+      <a href="mailto:bhattyash3333@gmail.com">bhattyash3333@gmail.com</a>
+      <a href="https://instagram.com/astrobyyash" target="_blank" rel="noopener">@astrobyyash</a>
+    </div>
+  </div>
+  <div class="copyright">© 2026 VedJyot Jyotish &amp; Puja Sewa. All rights reserved.</div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  const languageButtons = document.querySelectorAll('.language-tabs button');
+  const languagePanels = document.querySelectorAll('.lang-panel');
+
+  languageButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const selected = button.dataset.lang;
+      languageButtons.forEach(btn => btn.classList.toggle('active', btn === button));
+      languagePanels.forEach(panel => panel.classList.toggle('active', panel.dataset.lang === selected));
+      document.documentElement.lang = selected === 'gu' ? 'gu' : selected === 'hi' ? 'hi' : 'en';
+    });
+  });
+</script>
+</body>
+</html>
