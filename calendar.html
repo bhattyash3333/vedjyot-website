@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="VedJyot Gujarati calendar, Hindu festival dates and personalized muhurat guidance for families across Canada and the USA."/>
+  <meta name="theme-color" content="#7b1d1d"/>
+  <title>Gujarati Calendar & Muhurat | VedJyot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="style.css" rel="stylesheet"/>
+  <style>
+    :root{
+      --calendar-maroon:#7b1d1d;
+      --calendar-dark:#391817;
+      --calendar-gold:#d89a3b;
+      --calendar-cream:#fffaf1;
+      --calendar-line:#ead8c1;
+      --calendar-text:#5f493d;
+    }
+    .calendar-hero{
+      position:relative;
+      overflow:hidden;
+      padding:100px 0 78px;
+      background:
+        radial-gradient(circle at 85% 22%,rgba(216,154,59,.25),transparent 25%),
+        radial-gradient(circle at 10% 80%,rgba(123,29,29,.08),transparent 28%),
+        linear-gradient(135deg,#fffaf1,#f7e8d4);
+    }
+    .calendar-hero:after{
+      content:"ॐ";
+      position:absolute;
+      right:6%;
+      bottom:-90px;
+      color:rgba(123,29,29,.045);
+      font-size:360px;
+      font-family:"Cormorant Garamond",serif;
+      line-height:1;
+      pointer-events:none;
+    }
+    .calendar-hero-grid{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:58px;
+      align-items:center;
+    }
+    .calendar-hero h1{
+      max-width:700px;
+      margin:10px 0 18px;
+      color:#5f1518;
+      font-size:clamp(3.2rem,7vw,6rem);
+      line-height:.93;
+    }
+    .calendar-hero p{
+      max-width:660px;
+      color:#735e50;
+      line-height:1.75;
+    }
+    .calendar-hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+    .panchang-orbit{
+      width:min(380px,80vw);
+      aspect-ratio:1;
+      margin:auto;
+      position:relative;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(123,29,29,.18);
+      border-radius:50%;
+      box-shadow:0 30px 70px rgba(102,43,24,.14);
+      background:rgba(255,255,255,.45);
+    }
+    .panchang-orbit:before,
+    .panchang-orbit:after{
+      content:"";
+      position:absolute;
+      border:1px solid rgba(123,29,29,.14);
+      border-radius:50%;
+    }
+    .panchang-orbit:before{inset:35px}
+    .panchang-orbit:after{inset:72px}
+    .panchang-center{
+      width:130px;
+      height:130px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      color:#f6c76f;
+      background:linear-gradient(145deg,#691717,#8b2824);
+      font-size:58px;
+      box-shadow:0 18px 40px rgba(91,22,22,.24);
+    }
+    .orbit-label{
+      position:absolute;
+      min-width:88px;
+      padding:9px 12px;
+      border:1px solid var(--calendar-line);
+      border-radius:999px;
+      background:#fffaf5;
+      color:#6c201e;
+      font-size:.74rem;
+      font-weight:700;
+      text-align:center;
+      box-shadow:0 8px 22px rgba(64,31,16,.08);
+    }
+    .orbit-label:nth-of-type(2){top:20px;left:50%;transform:translateX(-50%)}
+    .orbit-label:nth-of-type(3){right:-3px;top:50%;transform:translateY(-50%)}
+    .orbit-label:nth-of-type(4){bottom:20px;left:50%;transform:translateX(-50%)}
+    .orbit-label:nth-of-type(5){left:-3px;top:50%;transform:translateY(-50%)}
+
+    .calendar-content{background:#fffdf9}
+    .calendar-intro{
+      max-width:790px;
+      margin:0 auto 34px;
+      text-align:center;
+    }
+    .calendar-intro h2{margin:6px 0 12px}
+    .calendar-intro p{color:#735f52;line-height:1.7}
+    .calendar-toolbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      margin-bottom:22px;
+      padding:18px 22px;
+      border:1px solid var(--calendar-line);
+      border-radius:18px;
+      background:#fff;
+      box-shadow:0 12px 32px rgba(83,44,22,.07);
+    }
+    .calendar-toolbar-info{
+      display:flex;
+      gap:36px;
+      flex-wrap:wrap;
+    }
+    .calendar-toolbar-info div{display:grid;gap:3px}
+    .calendar-toolbar-info span{
+      color:#8a7162;
+      font-size:.72rem;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+    }
+    .calendar-toolbar-info strong{
+      color:var(--calendar-maroon);
+      font-family:"Cormorant Garamond",serif;
+      font-size:1.45rem;
+    }
+    .festival-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .festival-card{
+      display:flex;
+      gap:17px;
+      min-height:190px;
+      padding:24px;
+      border:1px solid var(--calendar-line);
+      border-radius:18px;
+      background:#fff;
+      box-shadow:0 12px 30px rgba(87,45,22,.06);
+      transition:transform .25s ease,box-shadow .25s ease;
+    }
+    .festival-card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 18px 38px rgba(87,45,22,.11);
+    }
+    .festival-date{
+      flex:0 0 68px;
+      width:68px;
+      height:78px;
+      display:grid;
+      place-content:center;
+      text-align:center;
+      border-radius:14px;
+      color:#fff;
+      background:linear-gradient(145deg,#711919,#922d28);
+      box-shadow:inset 0 -5px 0 rgba(0,0,0,.08);
+    }
+    .festival-date span{
+      font-family:"Cormorant Garamond",serif;
+      font-size:2.05rem;
+      font-weight:700;
+      line-height:.8;
+    }
+    .festival-date small{
+      margin-top:8px;
+      font-size:.73rem;
+      font-weight:700;
+      letter-spacing:.13em;
+    }
+    .festival-tag{
+      display:inline-block;
+      margin-bottom:8px;
+      padding:5px 9px;
+      border-radius:999px;
+      background:#f8e8d4;
+      color:#955c1a;
+      font-size:.7rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+    .festival-info h3{
+      margin:0 0 8px;
+      color:#721d1d;
+      font-size:1.4rem;
+    }
+    .festival-info p{
+      margin:0;
+      color:#705c50;
+      font-size:.9rem;
+      line-height:1.65;
+    }
+    .muhurat-section{
+      background:
+        radial-gradient(circle at 90% 20%,rgba(230,172,73,.2),transparent 28%),
+        linear-gradient(135deg,#651717,#8c2723);
+      color:#fff;
+    }
+    .muhurat-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:center;
+    }
+    .muhurat-section .section-label{color:#f0bc65}
+    .muhurat-section h2{color:#fff;margin:6px 0 16px}
+    .muhurat-section p{color:#f5e8df;line-height:1.75}
+    .muhurat-list{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-top:26px;
+    }
+    .muhurat-list span{
+      padding:13px 14px;
+      border:1px solid rgba(255,255,255,.2);
+      border-radius:12px;
+      background:rgba(255,255,255,.07);
+      color:#fff9f0;
+      font-size:.88rem;
+    }
+    .muhurat-card{
+      padding:30px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:22px;
+      background:rgba(255,255,255,.09);
+      box-shadow:0 24px 56px rgba(39,5,7,.22);
+      backdrop-filter:blur(8px);
+    }
+    .muhurat-card h3{margin-top:0;color:#fff;font-size:1.8rem}
+    .muhurat-card ol{
+      margin:20px 0 26px;
+      padding-left:20px;
+      color:#f8eee8;
+      line-height:1.9;
+    }
+    .calendar-note{
+      margin-top:22px;
+      padding:18px 20px;
+      border-left:4px solid var(--calendar-gold);
+      border-radius:0 12px 12px 0;
+      background:#fff6e9;
+      color:#735b4c;
+      font-size:.85rem;
+      line-height:1.65;
+    }
+    .calendar-nav-active{
+      color:#7b1d1d !important;
+      font-weight:700 !important;
+    }
+    @media(max-width:960px){
+      .calendar-hero-grid,.muhurat-grid{grid-template-columns:1fr}
+      .festival-grid{grid-template-columns:1fr}
+      .panchang-orbit{margin-top:15px}
+    }
+    @media(max-width:650px){
+      .calendar-hero{padding:72px 0 55px}
+      .calendar-toolbar{align-items:flex-start;flex-direction:column}
+      .calendar-toolbar .btn{width:100%;text-align:center}
+      .festival-card{padding:19px}
+      .festival-date{flex-basis:58px;width:58px}
+      .muhurat-list{grid-template-columns:1fr}
+      .calendar-hero-actions .btn{width:100%;text-align:center}
+    }
+  </style>
+</head>
+<body>
+<header class="site-header" id="top">
+  <div class="container nav-wrap">
+    <a aria-label="VedJyot home" class="brand" href="index.html#top">
+      <span class="brand-mark">ॐ</span>
+      <span>
+        <strong>VEDJYOT</strong>
+        <small>Jyotish &amp; Puja Sewa</small>
+      </span>
+    </a>
+    <button aria-expanded="false" aria-label="Open menu" class="menu-toggle">☰</button>
+    <nav class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#astrology">Astrology</a>
+      <a href="index.html#samagri">Samagri</a>
+      <a class="calendar-nav-active" href="calendar.html">Calendar</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a class="nav-phone" href="tel:+12267243493">226-724-3493</a>
+  </div>
+</header>
+
+<main>
+  <section class="calendar-hero">
+    <div class="container calendar-hero-grid">
+      <div>
+        <p class="eyebrow">VedJyot Panchang • Ontario, Canada</p>
+        <h1>Gujarati Calendar &amp; Muhurat</h1>
+        <p>
+          Explore important Gujarati and Hindu observances, fasting days and festival dates.
+          For Griha Pravesh, weddings, business openings and other ceremonies, request a
+          personalized muhurat based on your location and family requirements.
+        </p>
+        <div class="calendar-hero-actions">
+          <a class="btn btn-primary" href="#festivals">View Festival Dates</a>
+          <a class="btn btn-secondary" href="#muhurat">Request Muhurat</a>
+        </div>
+      </div>
+      <div class="panchang-orbit" aria-label="Panchang elements">
+        <div class="panchang-center">ॐ</div>
+        <span class="orbit-label">Tithi</span>
+        <span class="orbit-label">Nakshatra</span>
+        <span class="orbit-label">Yoga</span>
+        <span class="orbit-label">Karana</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section calendar-content" id="festivals">
+    <div class="container">
+      <div class="calendar-intro">
+        <p class="section-label">2026 Festival Highlights</p>
+        <h2>Important Gujarati and Hindu observances</h2>
+        <p>
+          These highlights are prepared for visitors in Ontario. Exact fasting and puja timings
+          can vary by city, sunrise and Panchang tradition.
+        </p>
+      </div>
+
+      <div class="calendar-toolbar">
+        <div class="calendar-toolbar-info">
+          <div><span>Calendar Year</span><strong>2026</strong></div>
+          <div><span>Reference Location</span><strong>Toronto, Ontario</strong></div>
+        </div>
+        <a class="btn btn-primary" href="https://wa.me/12267243493?text=Namaste%2C%20I%20would%20like%20to%20confirm%20a%202026%20festival%20or%20puja%20timing%20for%20my%20city." target="_blank" rel="noopener">Confirm Local Timing</a>
+      </div>
+
+      <div class="festival-grid">
+        <article class="festival-card">
+          <div class="festival-date"><span>24</span><small>JUL</small></div>
+          <div class="festival-info">
+            <span class="festival-tag">Ekadashi</span>
+            <h3>Devshayani Ekadashi</h3>
+            <p>Lord Vishnu worship, fasting and the traditional beginning of Chaturmas.</p>
+          </div>
+        </article>
+        <article class="festival-card">
+          <div class="festival-date"><span>29</span><small>JUL</small></div>
+          <div class="festival-info">
+            <span class="festival-tag">Purnima</span>
+            <h3>Guru Purnima</h3>
+            <p>A sacred day to honour one’s Guru through puja, gratitude and spiritual observance.</p>
+          </div>
+        </article>
+        <article class="festival-card">
+          <div class="festival-date"><span>28</span><small>AUG</small></div>
+          <div class="festival-info">
+            <span class="festival-tag">Festival</span>
+            <h3>Raksha Bandhan</h3>
+            <p>A family celebration of the sacred bond between brothers and sisters.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="calendar-note">
+        Festival dates are location-sensitive. Before arranging a vrat, puja or ceremony, confirm
+        the final date and local timing for your city.
+      </div>
+    </div>
+  </section>
+
+  <section class="section muhurat-section" id="muhurat">
+    <div class="container muhurat-grid">
+      <div>
+        <p class="section-label">Personalized Muhurat</p>
+        <h2>Choose an auspicious time with confidence</h2>
+        <p>
+          A proper muhurat depends on the ceremony, location, local sunrise and family details.
+          VedJyot provides personalized guidance rather than using one general time for every family.
+        </p>
+        <div class="muhurat-list">
+          <span>🏠 Griha Pravesh</span>
+          <span>💍 Hindu Wedding</span>
+          <span>🏢 Business Opening</span>
+          <span>🚗 Vehicle Puja</span>
+          <span>🕉 Vastu &amp; Havan</span>
+          <span>👶 Naming Ceremony</span>
+        </div>
+      </div>
+      <div class="muhurat-card">
+        <h3>Request Your Muhurat</h3>
+        <p>Send the following information on WhatsApp:</p>
+        <ol>
+          <li>The ceremony or occasion</li>
+          <li>Your city and province/state</li>
+          <li>Your preferred date range</li>
+          <li>Relevant family details, when requested</li>
+        </ol>
+        <a class="btn btn-gold full" href="https://wa.me/12267243493?text=Namaste%2C%20I%20would%20like%20a%20personal%20muhurat.%0A%0ACeremony%3A%0ACity%3A%0APreferred%20date%20range%3A" target="_blank" rel="noopener">Ask Pandit Yash on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="container cta-inner">
+      <div>
+        <p>Planning a ceremony?</p>
+        <h2>Confirm your date, muhurat and samagri.</h2>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-light" href="tel:+12267243493">Call Now</a>
+        <a class="btn btn-gold" href="https://wa.me/12267243493" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <div class="brand">
+        <span class="brand-mark">ॐ</span>
+        <span><strong>VEDJYOT</strong><small>Jyotish &amp; Puja Sewa</small></span>
+      </div>
+      <p>Authentic Vedic puja, katha, havan and astrology guidance across Canada and the USA.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="index.html#services">Puja Services</a>
+      <a href="index.html#astrology">Astrology</a>
+      <a href="index.html#samagri">Samagri</a>
+      <a href="calendar.html">Gujarati Calendar</a>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <a href="tel:+12267243493">226-724-3493</a>
+      <a href="mailto:bhattyash3333@gmail.com">bhattyash3333@gmail.com</a>
+      <a href="https://instagram.com/astrobyyash" target="_blank" rel="noopener">@astrobyyash</a>
+    </div>
+  </div>
+  <div class="copyright">© 2026 VedJyot Jyotish &amp; Puja Sewa. All rights reserved.</div>
+</footer>
+
+<a aria-label="Chat on WhatsApp" class="floating-whatsapp" href="https://wa.me/12267243493" target="_blank" rel="noopener">✆</a>
+<script src="script.js"></script>
+</body>
+</html>
